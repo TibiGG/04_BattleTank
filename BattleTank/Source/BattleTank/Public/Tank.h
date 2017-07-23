@@ -10,6 +10,7 @@
 class UTankBarrel; 
 class UTankAimingComponent;
 class UTankTurret;
+class UTankMovementComponent;
 class AProjectile;
 
 UCLASS()
@@ -18,25 +19,28 @@ class BATTLETANK_API ATank : public APawn
 	GENERATED_BODY()
 
 public:
+	// Sets default values for this pawn's properties
+	ATank();
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetTurretReference(UTankTurret* TurretToSet);
 
-	void AimAt(FVector HitLocation);
-
 	UFUNCTION(BlueprintCallable)
 	void Fire();
 
-	// Sets default values for this pawn's properties
-	ATank();
+	void AimAt(FVector HitLocation);
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
+	UPROPERTY(BlueprintReadOnly)
+	UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:	
 	// Called to bind functionality to input
