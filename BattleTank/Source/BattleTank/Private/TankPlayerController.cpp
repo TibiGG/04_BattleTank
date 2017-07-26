@@ -2,8 +2,8 @@
 
 #include "TankPlayerController.h"
 #include "TankAimingComponent.h"
-#include "BattleTank.h"
 #include "Tank.h"
+
 #include "Engine.h"
 #include "Engine/World.h"
 

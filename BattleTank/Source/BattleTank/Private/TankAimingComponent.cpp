@@ -1,7 +1,6 @@
 // Copyright SeeShoreGames Inc.
 
 #include "TankAimingComponent.h"
-#include "BattleTank.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
 #include "Engine.h"
