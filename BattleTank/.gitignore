@@ -74,8 +74,5 @@ Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-# Starter content related files
-StarterContent/*
-
 # Tank Picture from HUD Blueprint
 tankPicture.uasset/*
