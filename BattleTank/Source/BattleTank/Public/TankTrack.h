@@ -20,11 +20,16 @@ public:
 	void SetThrottle(float Throttle);
 
 	// Max force per track, in Newtons
-	UPROPERTY(EditDefaultsOnly, Category = Movement)
+	UPROPERTY(EditDefaultsOnly, Category = "Movement")
 	float TrackMaxDrivingForce = 400000; // Assume 40 tonne tank, and 1g acceleration
 
 private:
 	UTankTrack();
 
+	virtual void BeginPlay() override;
+
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 };
