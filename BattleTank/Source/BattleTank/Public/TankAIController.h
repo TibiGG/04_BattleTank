@@ -17,10 +17,15 @@ class BATTLETANK_API ATankAIController : public AAIController
 protected:
 	// How close can the AI tank get 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	float AcceptanceRadius = 7500;
+	float AcceptanceRadius = 6000;
 
 private:
 	virtual void BeginPlay() override;
 
+	virtual void SetPawn(APawn* InPawn) override;
+
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+	void OnPossedTankDeath();
 };
