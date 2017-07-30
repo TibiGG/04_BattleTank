@@ -25,6 +25,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 
+	UFUNCTION()
+	void OnControlledTankDeath();
+
 private:
 	// Start the tank moving the barrel so that a shot would hit where
 	// the crosshair intersects the world
@@ -45,4 +48,6 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000.f;
+
+	virtual void SetPawn(APawn* InPawn) override;
 };
