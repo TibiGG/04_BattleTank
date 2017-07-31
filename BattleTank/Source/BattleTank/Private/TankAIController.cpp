@@ -35,10 +35,11 @@ void ATankAIController::Tick(float DeltaTime)
 	auto PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 	auto ControlledTank = GetPawn();
 
-	if (!ensure(PlayerTank && ControlledTank)) { return; }
+	if (!PlayerTank) { return; } // When the TankPlayerController will depossess the pawn, it gives an error TODO fix it
+	if (!ensure(ControlledTank)) { return; }
 	
 	// Move towards the player
-	MoveToActor(PlayerTank, AcceptanceRadius); // TODO check radius is in cm
+	MoveToActor(PlayerTank, AcceptanceRadius);
 
 	// Aim towards the player
 	auto AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
@@ -46,7 +47,7 @@ void ATankAIController::Tick(float DeltaTime)
 
 	if(AimingComponent->GetFiringState() == EFiringState::Locked)
 	{
-		AimingComponent->Fire(); // TODO don't fire every frame
+		AimingComponent->Fire();
 	}
 	
 }
