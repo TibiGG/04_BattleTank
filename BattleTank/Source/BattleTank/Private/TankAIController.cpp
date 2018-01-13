@@ -3,6 +3,7 @@
 #include "TankAIController.h"
 #include "TankAimingComponent.h"
 #include "Tank.h" // So we can implement OnDeath
+#include "Engine/World.h"
 // Depends on movement component via pathfinding system
 
 void ATankAIController::BeginPlay()
